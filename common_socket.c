@@ -3,8 +3,8 @@
 #define CLIENT_FLAGS 0
 #include "common_socket.h"
 
-struct addrinfo* get_addr_info(socket_t *self, const char *host, const char* service, int flags){
-
+struct addrinfo* get_addr_info(socket_t *self,const char *host,
+                                const char* service,int flags){
 	struct addrinfo *result;	
 	struct addrinfo hints;
 
@@ -28,15 +28,14 @@ void socket_create(socket_t* self, int fileDescriptor){
 	self->fd = fileDescriptor;
 }
 
-void socket_bind_and_listen(socket_t *self, const char *host, const char* service){
-
+void socket_bind_and_listen(socket_t *self, const char *host,
+                             const char* service){
 	int sfd;
 	int value = 1;
 
 	struct addrinfo* lista = get_addr_info(self, host, service, SERVER_FLAGS);
 
 	for (struct addrinfo* rp = lista ; rp != NULL; rp = rp->ai_next) {
-
 		sfd = socket(rp->ai_family, rp->ai_socktype, rp->ai_protocol);
 
 		setsockopt(sfd, SOL_SOCKET, SO_REUSEADDR, &value, sizeof(value));
@@ -60,11 +59,6 @@ void socket_bind_and_listen(socket_t *self, const char *host, const char* servic
 }
 
 void socket_accept(socket_t* self, socket_t* peer){
-
-	//el peer es para crear la semilla con la cual se comunica el servidor con el cliente.
-
-	puts("Waiting for incoming connections...");
-
 	int sock = accept(self->fd, NULL, NULL);
 
     if (sock < 0)
@@ -76,13 +70,11 @@ void socket_accept(socket_t* self, socket_t* peer){
 }
 
 void socket_connect(socket_t *self, const char *host, const char *service){
-
 	int sfd;
 
 	struct addrinfo* lista = get_addr_info(self, host, service, CLIENT_FLAGS);
 
 	for (struct addrinfo* rp = lista; rp != NULL; rp = rp->ai_next) {
-
 		sfd = socket(rp->ai_family, rp->ai_socktype, rp->ai_protocol); 
 
 		if (sfd == -1){
@@ -102,8 +94,7 @@ void socket_connect(socket_t *self, const char *host, const char *service){
 }
 
 
-ssize_t socket_send(socket_t *self, const unsigned char *buffer, size_t length){
-    
+ssize_t socket_send(socket_t *self, const unsigned char *buffer, size_t length){    
     if (length == 0){
     	return 0;
     }
@@ -112,8 +103,8 @@ ssize_t socket_send(socket_t *self, const unsigned char *buffer, size_t length){
     ssize_t bytes = 0;
     ssize_t remaining_bytes = length;
 
-    while ((bytes = send(self->fd, &buffer[bytes_sent], remaining_bytes, MSG_NOSIGNAL)) != 0) {
-
+    while ((bytes = send(self->fd, &buffer[bytes_sent], 
+            remaining_bytes, MSG_NOSIGNAL)) != 0){
         if (bytes == -1) {
             bytes_sent = -1;
             break;
@@ -131,17 +122,15 @@ ssize_t socket_send(socket_t *self, const unsigned char *buffer, size_t length){
 }
 
 ssize_t socket_receive(socket_t *self, char *buffer, size_t length){
-
-	if (length == 0){
+	if ( length == 0){
     	return 0;
     }
 
  	ssize_t bytes_received = 0;
     int remaining_bytes = length;
-    ssize_t bytes = 0;
+    ssize_t bytes;
 
     while (bytes_received < length) {
-
     	bytes = recv(self->fd, &buffer[bytes_received], remaining_bytes, 0);
 
         if (bytes == 0) {
@@ -152,7 +141,6 @@ ssize_t socket_receive(socket_t *self, char *buffer, size_t length){
             bytes_received = -1;
             break;
         }
-
         bytes_received += bytes;
         remaining_bytes -= bytes;
     }
@@ -161,7 +149,6 @@ ssize_t socket_receive(socket_t *self, char *buffer, size_t length){
 }
 
 void socket_destroy(socket_t *self){
-
 	if (!self) return;
 
     if (shutdown(self->fd, SHUT_RDWR) == -1) {
