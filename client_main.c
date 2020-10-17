@@ -30,7 +30,8 @@ int main(int argc, char *argv[]) {
 	}else if (parseador_get_method(&parseador) == 1){
 		vigenere_crear(&vigenere, (unsigned char*)parseador_get_key(&parseador));
 	}else{
-		rc4_crear(&rc4, (unsigned char*)parseador_get_key(&parseador), strlen(parseador_get_key(&parseador)));
+		rc4_crear(&rc4, (unsigned char*)parseador_get_key(&parseador), 
+						strlen(parseador_get_key(&parseador)));
 	}
 
 	while(!feof(stdin)){
@@ -47,7 +48,7 @@ int main(int argc, char *argv[]) {
 		}else{
 			rc4_cifrar_mensaje(&rc4, buffer, resultado);
 		}
-		
+
 		ssize_t bytes_sent = socket_send(&socket, buffer, resultado);
 
 		if (bytes_sent == -1){

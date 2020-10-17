@@ -22,7 +22,6 @@ unsigned char * clave_final(unsigned char* clave, int tamanio) {
 			clave[tamanio + n] = 0;
 		}
 	}
-	printf("la clave es %s\n", clave);
 	return clave;
 }
 
