@@ -19,19 +19,25 @@ El trabajo consistió en realizar un módulo mediante el cual se puedan acceder 
 <p align="center">
  
 <img src="Imagenes/TP1-Cifrador.jpg" title="Módulo Cifrador e interacción con cifradores" width="600" height="450">
-<div align="center">Perfiles.</div>
+<div align="center">Módulo Cifrador e interacción con cifradores</div>
  
 </p>
 
 El cliente y el servidor en cambio, fueron pensados cómo dos módulos separados los cuales interactúan entre sí mediante envío de mensajes siendo independiente la implementación de cada uno.
 
-**Cliente:**
+<p align="center">
+ 
+<img src="Imagenes/TP1-Cliente.jpg" title="Cliente" width="600" height="450">
+<div align="center">Cliente</div>
+ 
+</p>
 
-![](Imagenes/TP1-Cliente.jpg)
-
-**Servidor:**
-
-![](Imagenes/TP1-Servidor.jpg)
+<p align="center">
+ 
+<img src="Imagenes/TP1-Servidor.jpg" title="Servidor" width="600" height="450">
+<div align="center">Servidor</div>
+ 
+</p>
 
 Los diagramas mostrados no representan detalles internos de implementación, solo muestran el flujo de cada módulo realizado en el trabajo.
 
