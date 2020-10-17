@@ -12,27 +12,30 @@ El cliente le envía los mensajes cifrados con algunos de los métodos de encrip
 
 A continuación se explicaran los rasgos generales de diseño del trabajo realizado.
 
-#Diseño:
+# Diseño:
 
 El trabajo consistió en realizar un módulo mediante el cual se puedan acceder a los distintos cifrados ya sea de parte del cliente o del servidor para que estos puedan mandar los mensajes cifrados o al recibirlos descifrarlos.
 
-*Módulo Cifrador e interacción con cifradores*
-
-![](Imagenes/TP1-Cifrador.jpg)
+<p align="center">
+ 
+<img src="Imagenes/TP1-Cifrador.jpg" title="Módulo Cifrador e interacción con cifradores" width="600" height="450">
+<div align="center">Perfiles.</div>
+ 
+</p>
 
 El cliente y el servidor en cambio, fueron pensados cómo dos módulos separados los cuales interactúan entre sí mediante envío de mensajes siendo independiente la implementación de cada uno.
 
-*Cliente*
+**Cliente:**
 
 ![](Imagenes/TP1-Cliente.jpg)
 
-*Servidor*
+**Servidor:**
 
 ![](Imagenes/TP1-Servidor.jpg)
 
 Los diagramas mostrados no representan detalles internos de implementación, solo muestran el flujo de cada módulo realizado en el trabajo.
 
-#Problemas surgidos durante la realización del trabajo:
+# Problemas surgidos durante la realización del trabajo:
 
 En el transcurso de la implementación del trabajo fueron surgiendo dudas, incógnitas y problemas a ir resolviendo, los mas relevantes fueron:
 
