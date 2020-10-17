@@ -9,7 +9,6 @@
 #define BUFFER_SIZE 64
 
 int main(int argc, char *argv[]) {
-
 	unsigned char buffer[BUFFER_SIZE];
 	socket_t socket;
 	parseo_t parseador;
@@ -20,7 +19,8 @@ int main(int argc, char *argv[]) {
 	socket_connect(&socket, parseador_get_host(&parseador),
 					parseador_get_service(&parseador));
 
-	cifrador_inicializar_cifrado(&cifrador, parseador_get_method(&parseador), parseador_get_key(&parseador));
+	cifrador_inicializar_cifrado(&cifrador, parseador_get_method(&parseador), 
+							parseador_get_key(&parseador));
 
 	while(!feof(stdin)){
 		size_t resultado = fread(buffer, sizeof(char), BUFFER_SIZE, stdin);
