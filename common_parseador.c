@@ -36,16 +36,13 @@ void _obtener_parametros(parseo_t* self, int argc, char* argv[],
            break;
 
        	switch (c){
-
         case 0:
         	option = long_options[option_index].name;
 
 			if (strcmp(option, str_method) == 0){
-
 				if (strcmp(optarg, str_cesar) == 0){
 		          	self->method = 0;
-
-				} else if(strcmp(optarg, str_vigenere) == 0){
+				} else if (strcmp(optarg, str_vigenere) == 0){
 					self->method = 1;
 
 				} else if (strcmp(optarg, str_rc4) == 0){
@@ -53,7 +50,6 @@ void _obtener_parametros(parseo_t* self, int argc, char* argv[],
 				} else{
 					printf("No se pasaron metodos\n");
 				}
-
 			}else if (strcmp(long_options[option_index].name, str_key) == 0){
 				self->key = optarg;
 			}

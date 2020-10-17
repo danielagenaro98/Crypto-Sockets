@@ -43,14 +43,15 @@ int main(int argc, char *argv[]) {
 
 	crear_parseador(&parseador, argc, argv, 1);
 
-	LARGOsocket_connect(&socket, parseador_get_host(&parseador), parseador_get_service(&parseador));
+	socket_connect(&socket, parseador_get_host(&parseador),
+					parseador_get_service(&parseador));
 
 	while(!feof(stdin)){
 		size_t resultado = fread(buffer, sizeof(char), BUFFER_SIZE, stdin);
 
-		if( parseador_get_method(&parseador) == 0){
+		if (parseador_get_method(&parseador) == 0){
 			cifrar_mensaje_cesar(parseador_get_key(&parseador), buffer, resultado);
-		}else if( parseador_get_method(&parseador) == 1){
+		}else if (parseador_get_method(&parseador) == 1){
 			cifrar_mensaje_vigenere(parseador_get_key(&parseador), buffer, resultado);
 		}else{	
 			cifrar_mensaje_rc4(parseador_get_key(&parseador), buffer, resultado);
@@ -62,8 +63,6 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 	}
-
 	socket_destroy(&socket);
-
 	return 0;
 }

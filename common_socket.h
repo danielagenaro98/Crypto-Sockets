@@ -17,7 +17,8 @@ typedef struct {
 
 void socket_create(socket_t* self, int fileDescriptor);
 
-void socket_bind_and_listen(socket_t *self, const char *host, const char* service);
+void socket_bind_and_listen(socket_t *self, const char *host, 
+								const char* service);
 
 void socket_accept(socket_t* self, socket_t *peer);
 

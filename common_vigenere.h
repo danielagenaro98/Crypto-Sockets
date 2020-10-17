@@ -27,4 +27,4 @@ int vigenere_descifrar_mensaje(vigenere_t* self, unsigned char* mensaje,
 
 // Destruye la instancia self liberando sus recursos.
 // Pre: el cifrado de Vigenere fue creado con vigenere_crear() 
-void vigenere_destruir();
+//void vigenere_destruir();

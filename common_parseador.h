@@ -4,8 +4,7 @@
 #include <sys/types.h>
 
 //struct que define los parametros a usar.
-typedef struct {
-    
+typedef struct {  
 	char* host;
 	char* service;
 	char* key;

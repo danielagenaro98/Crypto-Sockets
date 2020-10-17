@@ -23,7 +23,3 @@ int cesar_descifrar_mensaje(cesar_t* self, unsigned char* mensaje,
 	}
 	return 0;
 }
-
-void cesar_cesar_destruir(){
-	//No se utiliza memoria dinamica. No hacer nada.
-}

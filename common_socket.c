@@ -94,7 +94,8 @@ void socket_connect(socket_t *self, const char *host, const char *service){
 }
 
 
-ssize_t socket_send(socket_t *self, const unsigned char *buffer, size_t length){    
+ssize_t socket_send(socket_t *self, const unsigned char *buffer, 
+                        size_t length){    
     if (length == 0){
     	return 0;
     }
@@ -113,7 +114,7 @@ ssize_t socket_send(socket_t *self, const unsigned char *buffer, size_t length){
         bytes_sent += bytes;
         remaining_bytes -= bytes;
 
-        if(remaining_bytes == 0){
+        if (remaining_bytes == 0){
         	break;
         }
     }
@@ -122,16 +123,15 @@ ssize_t socket_send(socket_t *self, const unsigned char *buffer, size_t length){
 }
 
 ssize_t socket_receive(socket_t *self, char *buffer, size_t length){
-	if ( length == 0){
+	if (length == 0){
     	return 0;
     }
 
  	ssize_t bytes_received = 0;
     int remaining_bytes = length;
-    ssize_t bytes;
 
     while (bytes_received < length) {
-    	bytes = recv(self->fd, &buffer[bytes_received], remaining_bytes, 0);
+    	ssize_t bytes = recv(self->fd, &buffer[bytes_received], remaining_bytes, 0);
 
         if (bytes == 0) {
             break;

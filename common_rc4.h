@@ -24,9 +24,10 @@ int rc4_cifrar_mensaje(rc4_t* self, unsigned char* mensaje,
 // Función para descifrar el mensaje con la clave almacenada. 
 // Pre: El mensaje apunta a un sector válido de memoria 
 // y fue creado el cifrado con rc4_crear().
-int rc4_descifrar_mensaje(rc4_t* self, unsigned char* mensaje, 
-						ssize_t largo_mensaje);
+//RC4 no lleva descifrado, se puede utilizar nuevamente rc4_cifrar_mensaje.
+//int rc4_descifrar_mensaje(rc4_t* self, unsigned char* mensaje, 
+//						ssize_t largo_mensaje);
 
 // Destruye la instancia self liberando sus recursos.
 // Pre: el cifrado de rc4 fue creado con rc4_crear() 
-void rc4_destruir();
+//void rc4_destruir();

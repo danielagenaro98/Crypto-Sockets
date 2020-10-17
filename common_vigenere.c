@@ -5,10 +5,11 @@ void vigenere_crear(vigenere_t* self, unsigned char* key){
 }
 
 unsigned char * clave_final(unsigned char* clave, int tamanio) {
-	int claveContador = 0;
 	int largo_clave = strlen((const char*)clave);
 	
 	if ( largo_clave < tamanio ) {
+		int claveContador = 0;
+		
 		for (int n = 0; n < tamanio; n++) {
 			if (claveContador >= largo_clave) {
 				claveContador = 0;
@@ -23,7 +24,6 @@ unsigned char * clave_final(unsigned char* clave, int tamanio) {
 	}
 	return clave;
 }
-
 
 int vigenere_cifrar_mensaje(vigenere_t* self, unsigned char* mensaje, 
 								ssize_t largo_mensaje){
@@ -43,7 +43,6 @@ int vigenere_cifrar_mensaje(vigenere_t* self, unsigned char* mensaje,
 	return 0;
 }
 
-
 int vigenere_descifrar_mensaje(vigenere_t* self, unsigned char* mensaje,
 								ssize_t largo_mensaje){
 	unsigned char* key_aux;	
@@ -59,11 +58,5 @@ int vigenere_descifrar_mensaje(vigenere_t* self, unsigned char* mensaje,
 		mensaje[i] = (mensaje[i] - key_aux[i]) % 256;
 
 	}
-
 	return 0;
-}
-
-
-void vigenere_destruir(){
-	//NADA
 }

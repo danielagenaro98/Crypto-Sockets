@@ -34,19 +34,8 @@ int rc4_cifrar_mensaje(rc4_t* self, unsigned char* mensaje,
 
     	swap(self->S, self->i, self->j);
 
-    	mensaje[y] = mensaje[y] ^ self->S[(self->S[self->i] + self->S[self->j]) % 256];
+    	mensaje[y] = mensaje[y] ^ self->S[(self->S[self->i] + 
+    					self->S[self->j]) % 256];
 	}
-
 	return 0;
-
-}
-
-int rc4_descifrar_mensaje(rc4_t* self, unsigned char* mensaje, 
-							ssize_t largo_mensaje){
-	//RC4 no lleva descifrado, se puede utilizar nuevamente rc4_cifrar_mensaje.
-	return 0;
-}
-
-void rc4_destruir(){
-	//NADA.
 }
