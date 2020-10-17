@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-// Tipo cesar_t: constructor del cifrado, contiene la clave a utilizar.
+// Tipo cesar_t: constructor del cifrado de Cesar, contiene la clave a utilizar.
 typedef struct {
     unsigned int key;
 } cesar_t;
