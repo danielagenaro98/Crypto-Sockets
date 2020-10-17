@@ -19,11 +19,14 @@ typedef struct {
 //Inicializa el metodo pasado por method con la clave key.
 void cifrador_inicializar_cifrado(cifrador_t* self, int method, char* clave);
 
-//Invoca el metodo almacenado en method.
+//Invoca el metodo de cifrado almacenado en method.
 //El cifrador debe haber sido inicializado con un metodo 
-//en cifrador_inicializar_cifrado
+//en cifrador_inicializar_cifrado.
 void cifrador_invocar_cifrado(cifrador_t* self, unsigned char* buffer, 
 								size_t resultado);
 
+//Invoca el metodo de cifrado almacenado en method.
+//El cifrador debe haber sido inicializado con un metodo 
+//en cifrador_inicializar_cifrado.
 void cifrador_invocar_descifrado(cifrador_t* self, 
 							unsigned char* buffer,size_t resultado);

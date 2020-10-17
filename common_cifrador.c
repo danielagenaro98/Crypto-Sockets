@@ -23,7 +23,6 @@ void cifrador_invocar_cifrado(cifrador_t* self, unsigned char* buffer,
 	}else{
 		rc4_cifrar_mensaje(&(self->rc4), buffer, resultado);
 	}
-
 }
 
 void cifrador_invocar_descifrado(cifrador_t* self, 
