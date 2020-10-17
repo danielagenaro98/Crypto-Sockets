@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 		int key = atoi(parseador_get_key(&parseador));
 		cesar_crear(&cesar, key);
 	}else if (parseador_get_method(&parseador) == 1){
-		vigenere_crear(&vigenere, (unsigned char*)parseador_get_key(&parseador));
+		vigenere_crear(&vigenere, parseador_get_key(&parseador));
 	}else{
 		rc4_crear(&rc4, (unsigned char*)parseador_get_key(&parseador), 
 						strlen(parseador_get_key(&parseador)));
@@ -48,7 +48,6 @@ int main(int argc, char *argv[]) {
 		}else{
 			rc4_cifrar_mensaje(&rc4, buffer, resultado);
 		}
-
 		ssize_t bytes_sent = socket_send(&socket, buffer, resultado);
 
 		if (bytes_sent == -1){

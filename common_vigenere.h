@@ -7,11 +7,13 @@
 // Tipo vigenere_t : contiene la clave con la cual cifrar.
 typedef struct {
     unsigned char* key;
+    int len_key;
+    int indice;
 } vigenere_t;
 
 //Función para la creación del cifrado de Vigenere.
 // Pre: key apunta a un sector válido de memoria.
-void vigenere_crear(vigenere_t* self, unsigned char* key);
+void vigenere_crear(vigenere_t* self, char* key);
 
 // Función para cifrar el mensaje con la clave almacenada. 
 // Pre: El mensaje apunta a un sector válido de memoria 
