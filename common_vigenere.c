@@ -5,7 +5,7 @@ void vigenere_crear(vigenere_t* self, unsigned char* key){
 }
 
 unsigned char * clave_final(unsigned char* clave, int tamanio) {
-	int largo_clave = strlen((const char*)clave);
+	int largo_clave = strlen((const char*)clave)-1;
 	
 	if ( largo_clave < tamanio ){
 		int claveContador = 0;
@@ -22,6 +22,7 @@ unsigned char * clave_final(unsigned char* clave, int tamanio) {
 			clave[tamanio + n] = 0;
 		}
 	}
+	printf("la clave es %s\n", clave);
 	return clave;
 }
 
