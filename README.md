@@ -34,7 +34,7 @@ El cliente y el servidor en cambio, fueron pensados cómo dos módulos separados
 
 <p align="center">
  
-<img src="Imagenes/TP1-Servidor.jpg" title="Servidor" width="400" height="600">
+<img src="Imagenes/TP1-Servidor.jpg" title="Servidor" width="400" height="700">
 <div align="center">Servidor</div>
  
 </p>
