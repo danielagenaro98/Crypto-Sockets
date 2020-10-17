@@ -7,7 +7,7 @@ void vigenere_crear(vigenere_t* self, unsigned char* key){
 unsigned char * clave_final(unsigned char* clave, int tamanio) {
 	int largo_clave = strlen((const char*)clave);
 	
-	if ( largo_clave < tamanio ) {
+	if ( largo_clave < tamanio ){
 		int claveContador = 0;
 		
 		for (int n = 0; n < tamanio; n++) {
@@ -31,7 +31,7 @@ int vigenere_cifrar_mensaje(vigenere_t* self, unsigned char* mensaje,
 	ssize_t largo_clave = strlen((const char*)(self->key));
 
 	if (largo_mensaje != largo_clave){
-		key_aux = clave_final(self->key, largo_mensaje-1); 
+		key_aux = clave_final(self->key, largo_mensaje); 
 	}else{
 		key_aux = self->key;
 	}
@@ -49,7 +49,7 @@ int vigenere_descifrar_mensaje(vigenere_t* self, unsigned char* mensaje,
 	ssize_t largo_clave = strlen((const char*)(self->key));
 
 	if (largo_mensaje != largo_clave){
-		key_aux = clave_final(self->key, largo_mensaje-1); 
+		key_aux = clave_final(self->key, largo_mensaje); 
 	}else{
 		key_aux = self->key;
 	}

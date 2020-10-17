@@ -46,8 +46,14 @@ int main(int argc, char *argv[]) {
 	socket_connect(&socket, parseador_get_host(&parseador),
 					parseador_get_service(&parseador));
 
+
 	while(!feof(stdin)){
 		size_t resultado = fread(buffer, sizeof(char), BUFFER_SIZE, stdin);
+
+		if (buffer[resultado-1] == 10)
+		{
+			resultado--;
+		}
 
 		if (parseador_get_method(&parseador) == 0){
 			cifrar_mensaje_cesar(parseador_get_key(&parseador), buffer, resultado);

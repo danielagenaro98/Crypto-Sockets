@@ -56,10 +56,7 @@ int main(int argc, char* argv[]){
 			descifrar_mensaje_rc4(parseador_get_key(&parseador), 
 									(unsigned char*)buffer, bytes);
 		}
-
-		for( int i = 0 ; i < bytes; i++ ) {
-			fputc(buffer[i], stdout);
-  		}
+		fwrite(buffer, 1, bytes, stdout);
 	}
 
 	socket_destroy(&socket);
