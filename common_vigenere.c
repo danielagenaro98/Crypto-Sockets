@@ -56,7 +56,6 @@ int vigenere_descifrar_mensaje(vigenere_t* self, unsigned char* mensaje,
 
 	for(int i = 0; i < largo_mensaje; i++){
 		mensaje[i] = (mensaje[i] - key_aux[i]) % 256;
-
 	}
 	return 0;
 }

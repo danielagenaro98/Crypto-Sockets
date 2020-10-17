@@ -49,11 +49,10 @@ int main(int argc, char* argv[]){
 		if(parseador_get_method(&parseador) == 0){
 			descifrar_mensaje_cesar(parseador_get_key(&parseador),
 										 (unsigned char*)buffer, bytes);
-		} else if(parseador_get_method(&parseador) == 1){
+		} else if (parseador_get_method(&parseador) == 1){
 			descifrar_mensaje_vigenere(parseador_get_key(&parseador), 
 										(unsigned char*)buffer, bytes);
-		}else{	
-			
+		}else{				
 			descifrar_mensaje_rc4(parseador_get_key(&parseador), 
 									(unsigned char*)buffer, bytes);
 		}
