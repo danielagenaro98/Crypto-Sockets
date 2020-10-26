@@ -1,3 +1,5 @@
+#ifndef COMMON_VIGENERE
+#define COMMON_VIGENERE
 #include <string.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -30,3 +32,4 @@ int vigenere_descifrar_mensaje(vigenere_t* self, unsigned char* mensaje,
 // Destruye la instancia self liberando sus recursos.
 // Pre: el cifrado de Vigenere fue creado con vigenere_crear() 
 //void vigenere_destruir();
+#endif

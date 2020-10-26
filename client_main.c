@@ -5,6 +5,7 @@
 #include "common_socket.h"
 #include "common_parseador.h"
 #include "common_cifrador.h"
+#include "client_tda.h"
 
 #define BUFFER_SIZE 64
 
@@ -13,6 +14,7 @@ int main(int argc, char *argv[]) {
 	socket_t socket;
 	parseo_t parseador;
 	cifrador_t cifrador;
+	cliente_t cliente;
 
 	crear_parseador(&parseador, argc, argv, 1);
 
@@ -22,21 +24,9 @@ int main(int argc, char *argv[]) {
 	cifrador_inicializar_cifrado(&cifrador, parseador_get_method(&parseador), 
 							parseador_get_key(&parseador));
 
-	while(!feof(stdin)){
-		size_t resultado = fread(buffer, sizeof(char), BUFFER_SIZE, stdin);
+	cliente_crear(&cliente, NULL);
+	cliente_enviar_mensaje(&cliente, &cifrador, &socket, buffer);
 
-		if (buffer[resultado-1] == 10){
-			resultado--;
-		}
-
-		cifrador_invocar_cifrado(&cifrador, buffer, resultado);
-
-		ssize_t bytes_sent = socket_send(&socket, buffer, resultado);
-
-		if (bytes_sent == -1){
-			break;
-		}
-	}
 	socket_destroy(&socket);
 	return 0;
 }

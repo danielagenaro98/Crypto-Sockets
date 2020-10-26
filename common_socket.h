@@ -1,3 +1,5 @@
+#ifndef COMMON_SOCKET
+#define COMMON_SOCKET
 #include <stddef.h>
 #include <stdint.h>
 #include <unistd.h>
@@ -29,3 +31,4 @@ ssize_t socket_send(socket_t *self, const unsigned char *buffer, size_t length);
 ssize_t socket_receive(socket_t *self, char *buffer, size_t length);
 
 void socket_destroy(socket_t *self);
+#endif

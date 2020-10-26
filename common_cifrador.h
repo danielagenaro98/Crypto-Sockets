@@ -1,3 +1,5 @@
+#ifndef COMMON_CIFRADOR
+#define COMMON_CIFRADOR
 #include <string.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -30,3 +32,4 @@ void cifrador_invocar_cifrado(cifrador_t* self, unsigned char* buffer,
 //en cifrador_inicializar_cifrado.
 void cifrador_invocar_descifrado(cifrador_t* self, 
 							unsigned char* buffer,size_t resultado);
+#endif

@@ -1,3 +1,5 @@
+#ifndef COMMON_RC4
+#define COMMON_RC4
 #include <string.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -31,3 +33,4 @@ int rc4_cifrar_mensaje(rc4_t* self, unsigned char* mensaje,
 // Destruye la instancia self liberando sus recursos.
 // Pre: el cifrado de rc4 fue creado con rc4_crear() 
 //void rc4_destruir();
+#endif

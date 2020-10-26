@@ -55,7 +55,11 @@ void socket_bind_and_listen(socket_t *self, const char *host,
 
     socket_create(self, sfd);
 
-    listen(self->fd, 10);
+    int resultado = listen(self->fd, 10);
+
+    if (resultado == -1){
+        fprintf(stderr, "listen fail %s\n", strerror(h_errno));
+    }
 }
 
 void socket_accept(socket_t* self, socket_t* peer){

@@ -1,20 +1,17 @@
 #include "common_parseador.h"
 
+#define STR_METHOD "method"
+#define STR_KEY "key"
+#define STR_CESAR "cesar"
+#define STR_VIGENERE "vigenere"
+#define STR_RC4 "rc4"
+
 
 void crear_parseador(parseo_t* self, int argc, char* argv[], int usa_service){
 	_obtener_parametros(self, argc, argv, usa_service);
 }
 
-
-void _obtener_parametros(parseo_t* self, int argc, char* argv[], 
-							int usa_service){	
-	const char* option;
-	char str_method[] = "method";
-	char str_key[] = "key"; 
-	char str_cesar[] = "cesar";
-	char str_vigenere[] = "vigenere";
-	char str_rc4[] = "rc4";
-
+void _definir_host_service(parseo_t* self, char* argv[], int usa_service){
 	self -> host = argv[1];
 
 	if (usa_service){
@@ -23,7 +20,15 @@ void _obtener_parametros(parseo_t* self, int argc, char* argv[],
 		self -> service = NULL;
 	}
 
+}
+
+void _obtener_parametros(parseo_t* self, int argc, char* argv[], 
+							int usa_service){	
+	const char* option;
+	_definir_host_service(self, argv, usa_service);
+
 	while (1){
+
 		int option_index = 0;
 
     	static struct option long_options[] = {
@@ -39,18 +44,18 @@ void _obtener_parametros(parseo_t* self, int argc, char* argv[],
         case 0:
         	option = long_options[option_index].name;
 
-			if (strcmp(option, str_method) == 0){
-				if (strcmp(optarg, str_cesar) == 0){
+			if (strcmp(option, STR_METHOD) == 0){
+				if (strcmp(optarg, STR_CESAR) == 0){
 		          	self->method = 0;
-				} else if (strcmp(optarg, str_vigenere) == 0){
+				} else if (strcmp(optarg, STR_VIGENERE) == 0){
 					self->method = 1;
 
-				} else if (strcmp(optarg, str_rc4) == 0){
+				} else if (strcmp(optarg, STR_RC4) == 0){
 					self->method = 2;
 				} else{
 					printf("No se pasaron metodos\n");
 				}
-			}else if (strcmp(long_options[option_index].name, str_key) == 0){
+			}else if (strcmp(long_options[option_index].name, STR_KEY) == 0){
 				self->key = optarg;
 			}
           break;

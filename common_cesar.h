@@ -1,3 +1,5 @@
+#ifndef COMMON_CESAR
+#define COMMON_CESAR
 #include <string.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -28,3 +30,4 @@ int cesar_descifrar_mensaje(cesar_t* self, unsigned char* mensaje,
 // Destruye la instancia self liberando sus recursos.
 // Pre: el cifrado de Cesar fue creado con cesar_crear() 
 // void cesar_cesar_destruir();
+#endif
