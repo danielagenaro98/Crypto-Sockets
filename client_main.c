@@ -18,11 +18,11 @@ int main(int argc, char *argv[]) {
 
 	crear_parseador(&parseador, argc, argv, 1);
 
-	socket_connect(&socket, parseador_get_host(&parseador),
-					parseador_get_service(&parseador));
+	socket_connect(&socket, parseador.host,
+					parseador.service);
 
-	cifrador_inicializar_cifrado(&cifrador, parseador_get_method(&parseador), 
-							parseador_get_key(&parseador));
+	cifrador_inicializar_cifrado(&cifrador, parseador.method, 
+							parseador.key);
 
 	cliente_crear(&cliente, NULL);
 	cliente_enviar_mensaje(&cliente, &cifrador, &socket, buffer);

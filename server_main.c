@@ -17,14 +17,15 @@ int main(int argc, char* argv[]){
 
 	crear_parseador(&parseador, argc, argv, 0);
 
-	socket_bind_and_listen(&socket, NULL, parseador_get_host(&parseador));
+	socket_bind_and_listen(&socket, NULL, parseador.host);
 	socket_accept(&socket, &peer);
 
-	cifrador_inicializar_cifrado(&cifrador, parseador_get_method(&parseador), 
-								parseador_get_key(&parseador));
+	cifrador_inicializar_cifrado(&cifrador, parseador.method, 
+								parseador.key);
 
 	server_crear(&server, NULL);
-	server_recibir_mensajes(&server, &cifrador, &socket, &peer, buffer);
+	server_recibir_mensajes(&server, &cifrador, 
+						&socket, &peer, buffer);
 
 	socket_destroy(&socket);
 	socket_destroy(&peer);

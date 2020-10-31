@@ -19,7 +19,6 @@ void _definir_host_service(parseo_t* self, char* argv[], int usa_service){
 	}else{
 		self -> service = NULL;
 	}
-
 }
 
 void _obtener_parametros(parseo_t* self, int argc, char* argv[], 
@@ -61,20 +60,4 @@ void _obtener_parametros(parseo_t* self, int argc, char* argv[],
           break;
         }
 	}
-}
-
-char* parseador_get_host(parseo_t* self){
-	return self->host;
-}
-
-char* parseador_get_service(parseo_t* self){
-	return self->service;
-}
-
-char* parseador_get_key(parseo_t* self){
-	return self->key;
-}
-
-int parseador_get_method(parseo_t* self){
-	return self->method;
 }
